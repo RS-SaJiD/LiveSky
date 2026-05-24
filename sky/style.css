@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Poppins;
+    src: url('assets/fonts/Poppins-Regular.ttf')
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.weather-card {
+  transition: all 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 
+              0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.favorite-btn {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #ff6b6b;
+}
+
+.error-toast {
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.error-toast.hide {
+  animation: slideOut 0.3s ease forwards;
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(to bottom right, #0f172a, #1e1b4b);
+  }
+}
+
+/* Dark mode theme (when .dark class is added to html) */
+html.dark body {
+  background: linear-gradient(to bottom right, #0f172a, #1e1b4b);
+  color: #ffffff;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Light mode theme */
+html:not(.dark) body {
+  background: linear-gradient(to bottom right, #cffafe, #a5f3fc);
+  color: #1f2937;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html:not(.dark) .text-white {
+  color: #1f2937;
+}
+
+html:not(.dark) .bg-white\/10 {
+  background-color: rgba(30, 27, 75, 0.1);
+}
+
+html:not(.dark) .border-white\/20 {
+  border-color: rgba(30, 27, 75, 0.2);
+}
+
+html:not(.dark) .text-gray-400 {
+  color: #6b7280;
+}
+
+/* Light mode glass effect for cards */
+html:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #1f2937;
+}
+
+/* Light mode weather cards */
+html:not(.dark) .weather-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #1f2937;
+}
+
+html:not(.dark) .weather-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Light mode input styling */
+html:not(.dark) input {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border-color: rgba(59, 130, 246, 0.25) !important;
+  color: #1f2937 !important;
+}
+
+html:not(.dark) input::placeholder {
+  color: #9ca3af !important;
+}
+
+html:not(.dark) input:focus {
+  border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Light mode button styling */
+html:not(.dark) #search-btn {
+  background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3) !important;
+}
+
+html:not(.dark) #search-btn:hover {
+  background: linear-gradient(135deg, #0891b2, #0e7490) !important;
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4) !important;
+}
